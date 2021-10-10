@@ -7,9 +7,6 @@ public class CalculatorTest {
 		System.out.println(cal.multiply(9, 3));
 		System.out.println(cal.divide(9, 3));
 
-
-
-
 	}
 
 }
