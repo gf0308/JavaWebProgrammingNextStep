@@ -1,40 +1,70 @@
+import static org.junit.jupiter.api.Assertions.*;
 
-public class CalculatorTest {
+/*import org.junit.After;
+import org.junit.Before;*/
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-	public static void main(String[] args) {
-		Calculator cal = new Calculator();
+class CalculatorTest {
 
-		add(cal);
-		subtract(cal);
-		multiply(cal);
-		divide(cal);
+	private Calculator cal;
+
+	@BeforeEach		// junit5부턴 @Before -> @BeforeEach 로 바뀜
+	public void setUp() { // 초기화 작업
+		cal = new Calculator();
+		System.out.println("setUp!!");
 	}
 
-	// 각 기능 메서드를 테스트해보는 테스트코드를 메서드 별로 분리
-	private static void add(Calculator cal) {
-		System.out.println(cal.add(9, 3));
+	@Test
+	public void add() {
+		assertEquals(3, cal.add(2, 1));		// assertEquals(예상하는값, 실제결과)
+		System.out.println("add!");
 	}
 
-	private static void subtract(Calculator cal) {
-		System.out.println(cal.subtract(9, 3));
+	@Test
+	public void divide() {
+		assertEquals(3, cal.divide(9, 3));
+		System.out.println("divide!");
 	}
 
-	private static void multiply(Calculator cal) {
-		System.out.println(cal.multiply(9, 3));
+	@AfterEach	// junit5부턴 @After -> @AfterEach 로 바뀜
+	public void teardown() { // 후처리 작업
+		System.out.println("teardown!!");
 	}
 
-	private static void divide(Calculator cal) {
-		System.out.println(cal.divide(9, 3));
-	}
-
-	/* 이 방식도 궁극적 해결책이 될 순 없음
-	 * - 문제(1) : Calculator 클래스가 갖고 있는 모든 메서드를 테스트 해볼 수 밖에 없음 (그렇다고 테스트할 메서드만 남기고 다른 메서드들은 주석처리하는 것은 불합리한 작업임)
-	 * - 문제(2) : 테스트 결과 출력되는 결과값을, 매번 콘솔창을 통해 직접 수동으로 확인해야 함 ( 만약 이 코드이 내용이 엄청 길고, 짠지 오랜 시간이 지난 후에 보게 된다면, 테스트결과 나와야 하는 값이 무엇인지 기억도 안날것이고 머리속으로 계산하더라도 공연히 시간을 소요할 것임)
-	 *
-	 * => 이런 문제를 해결하기 이해 나온 라이브러리가 'JUnit'
-	 *   : 내가 테스트하고 싶은 메서드만 테스트를 할 수 있음
-	 *    + 로직 실행 후 (예상)결과값이 맞는지 확인하는 작업을 자동화 할 수 있음(ex: assertEquals() 등의 기능으로)
-	 *
-	 * */
+	// JUnit은 '전처리 작업/후처리 작업'을 별도로 두고 이를 각 테스트 마다 매번 수행되어지게 함으로써
+	// '각 테스트 간의 독립성'을 보장하도록 하고 있다 (@BeforeEach, @AfterEach 등으로)
 
 }
+
+	// JUnit은 'Calculator cal = new Calculator();' 식으로 멤버필드를 직접 빼놓고 선언해놓는 것을 권하지 않는다, 이런 방식은 테스트에 있어서 위험성이 있다.
+	// 예를 들어 위와 같은 방식은 CalculatorTest의 실행 시 Calculator객체 생성이 1번 이뤄지는데, 이를 여러 테스트메서드들(add,divide,,,)이 함께 공유해서 쓰게 된다.
+	// -> 헌데 이러면 한 메서드(ex: add)가 작업 중 작업 결과가 cal객체 상태를 변경시킬 수 있다, 그리고 그렇게 되면 다른 객체가 cal객체를 이용할 때 test결과가 정상적으로 수행되지 않을 가능성이 있다.
+
+	// 이러한 문제를 방지하고 안전한 초기화를 위하여, 대신 @Before라는 애너테이션을 지원하고 있다
+	// @Before 를 단 메서드 제작해 사용 => '멤버필드의 초기화' 를 수행하는 테스트메서드를 만들어 쓰도록 권한다
+	// -> 매 테스트 실행 시 마다 그때 그때 멤버필드 초기화를 매번 수행함
+
+	// @Before 메서드를 통하여 , 각 테스트들이 실행되기 전(before) 마다 새로이 필요한 전처리(ex: Calculator 인스턴스 생성)를 매번 해주게 된다.
+	// -> 이로 인해 각 테스트는 테스트 시 사용하는 준비물(ex: cal 객체 등)을 '독립적으로, 자기 전용으로' 얻어서 사용할 수 있다 (각 테스트 마다 자기가 사용하는 객체의 독립성을 보장하는 것)
+	// -> 그럼으로써 각자의 테스트에 지장이나 영향이 가지 않도록 하고 정상적인 테스트 수행을 달성한다.
+
+/*
+ *
+ * Junit에서 @Before나 setUp() 으로 객체 생성 초기화를 해주는 이유
+ *
+ * 1. Exception 발생 시 유용한 정보 습득을 위하여
+ *   : setUp()에서 예외가 발생하면 JUnit이 유용한 스택트레이스 정보를 돌려주지만,
+ *     생성자에서 예외가 발생하면 그냥 테스트 객체를 못 만드는 것이기 때문에 유용한 정보를 얻을 수 없음.
+ *
+ * 2. Best Practice이기 때문
+ *   : 테스트하려는 클래스의 인스턴스는 테스트 또는 setUp()에서 생성하고, 테스트 대상이 아닌 속성들은
+ *     필드에서 직접 new로 생성해도 상관없음
+ *
+ * 3. @RunWith, @Rule 같은 애너테이션을 사용하여 확장하는 기능을 이용하기 위해
+ *   : "@Before 테스트 메서드 안에서만 @RunWith, @Rule에서 초기화 된 객체에 접근할 수 있다"는 제약사항이 있음.
+ *    -> 따라서 가능한 @Before 테스트 메서드에서 초기화 작업을 하는 것이 추후 문제가 발생할 가능성을 없앨 수 있음.
+ *
+ * */
+
