@@ -15,7 +15,7 @@ import java.util.Scanner;
  *
  * 문자열 계산기에 음수가 전달되는 경우 'RuntimeException'으로 예외처리가 되어져야 한다.
  * */
-public class StringCalculatorTest {
+public class StringCalculatorMyTest {
 
 	public static void main(String[] args) {
 
