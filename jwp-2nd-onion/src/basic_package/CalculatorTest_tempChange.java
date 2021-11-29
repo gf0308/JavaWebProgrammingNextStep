@@ -1,3 +1,5 @@
+package basic_package;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /*import org.junit.After;
