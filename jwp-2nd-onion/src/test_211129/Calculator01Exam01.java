@@ -1,5 +1,10 @@
 package test_211129;
 
+/*
+ * - 커스텀구분자는 투입문자열의 앞에 온다
+ * - 일반구분자, 커스텀구분자로 구분되어 표현된 숫자문자열은 반드시 숫자값과 구분자로만 이루어진 채의 투입값으로 날라온다, 쓸데없는 잡코드는 섞여오지 않는다
+ * */
+
 public class Calculator01Exam01 {
 
 	// 메인 수행 메서드
@@ -20,17 +25,21 @@ public class Calculator01Exam01 {
 	}
 
 
+	// 커스텀구분자로 숫자값 배열 얻기
 	public String[] getNumsByCustomDivider(String param) {
-		int leftMarkIndex = param.lastIndexOf("//");    // -이걸로 되나?
-		int rightMarkIndex = param.lastIndexOf("\n");  // -이걸로 되나?
-		String customDivider = param.substring(leftMarkIndex, rightMarkIndex-1);
-		return param.split(customDivider);
+		int leftMarkIndex = param.lastIndexOf("//");
+		int rightMarkIndex = param.lastIndexOf("\n");
+		String customDivider = param.substring(leftMarkIndex+2, rightMarkIndex);
+		String cleanedParam = param.substring(rightMarkIndex+1); // 커스텀구분자를 기준으로 스플릿하기 전, 투입문자열값에서 구분자부분은 배제해주기
+		return cleanedParam.split(customDivider);
 	}
 
+	// 기분구분자로 숫자값 배열 얻기
 	public String[] getNumsByBasicDivider(String param) {
 		return param.split(",|:");
 	}
 
+	// 음수여부 체크하기
 	public void isThereNegativeNumber(String[] strNums) {
 		for(String strNum : strNums) {
 			if(Integer.parseInt(strNum) < 0) {
@@ -39,6 +48,7 @@ public class Calculator01Exam01 {
 		}
 	}
 
+	// 숫자값 총합 얻기
 	public int sumNumbers(String[] strNums) {
 		int sum = 0;
 		for(String strNum : strNums) {
