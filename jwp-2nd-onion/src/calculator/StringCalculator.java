@@ -1,36 +1,107 @@
 package calculator;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+/*
+ * 	//[만족해야할 조건들]
+	// 빈 문자열또는 null갑을 입력할 경우 0을 반환해야 함
+	// 숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환한다
+	// 숫자 두개를 쉼표 구분자로 입력할 경우 두 숫자의 합을 반환한다
+	// 구분자를 쉼표 이외에 콜론을 사용할수있다
+	// "//" 와 "\n" 문자 사이에 커스텀 수분자를 지정할 수 있다.
+	// 문자열 계산기에 음수를 전달하는 경우 RuntimeException 예외처리를 한다.
+
+ *
+ * 다음 3가지 원칙을 고려해서 리팩토링 하기
+ * - 1) 한 메서드는 하나의 책임만 갖기-V
+ * - 2) 인덴트(indent) 의 깊이(depth)는 2이상되지 않도록 하기-V
+ * - 3) else 문은 사용하지 않기-V
+ *
+ * */
+
 public class StringCalculator {
 
-	int add(String text) { // text는 반드시 숫자를 포함하며, 반드시 기본구분자 혹은 커스텀구분자를 포함한 문자열로 투입된다
-							// 구분자는 기본구분자만 쓰거나 or 커스텀구분자가쓰이면 커스텀구분자만 담겨있다
+	// 문자열숫자 총합 계산 수행 메서드
+	public int calculateStrNumSum(String param) {
+		String[] arrs = null;
 
-		// 투입값이 빈값이거나 null일경우 : 0을 반환
-		if(text == null || text.isEmpty()) { // text.isEmpty() = text.equals("") 동일.
+		if(param.isEmpty() || param == null) {
 			return 0;
 		}
 
-		// 값이 기본구분자(이 예제에선 , : 두개)로 구분되어있을경우 기본구분자를 기준으로 값을 분리해서 더한다
-		String[] strArr = text.split(",|:");
-		if(strArr.length < 2) {
-			return Integer.parseInt(strArr[0]);
-		} else {
-			int sum = 0;
-			for(int i=0; i<strArr.length; i++) {
-				sum += Integer.parseInt(strArr[i]);
-			}
-			return sum;
+		if(param.length() == 1 && Character.isDigit(param.charAt(0)) ) {
+			return Integer.parseInt(param);
 		}
 
-		// 커스텀 구분자를 사용하고 있을 경우 : Pattern.match 혹은 Pattern.complie 중 적당한것을 선택해 사용해 판별
+		if(param.length() != 1 && isStrAllNum(param)) {
+			return Integer.parseInt(param);
+		}
+
+		Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(param);
+		if(matcher.find()) { // 커스텀구분자로 오는 문자열값은 구분자 외의 값은 순수하게 숫자뿐인가?
+			arrs = getNumsByCustomDivider(param, matcher);
+		}
+
+		if(param.contains(",") || param.contains(":")) {
+			arrs = getNumsByBasicDivider(param);
+		}
+
+		isThereNegativeNumber(arrs);
+
+		return sumNumbers(arrs);
+	}
 
 
-		// 음수가 투입되었을 경우 RuntimeException 이 반환
+	// 커스텀구분자 기준으로 구분하여 숫자들 얻기
+	public String[] getNumsByCustomDivider(String param, Matcher matcher) {
+		String customDelimeter = matcher.group(1);
+		String targetStr = matcher.group(2);
+		return targetStr.split(customDelimeter);
+	}
 
+	// 기본구분자 기준으로 구분하여 숫자들 얻기
+	public String[] getNumsByBasicDivider(String param) {
+		return param.split(",|:");
+	}
 
+	// 음수가 존재한는지 확인
+	public void isThereNegativeNumber(String[] strNums) {
+		for(String strNum : strNums) {
+			if(Integer.parseInt(strNum) < 0) throw new RuntimeException();
+		}
+	}
 
+	// 숫자들 전부 더한값 얻기
+	public int sumNumbers(String[] strNums) {
+		int sum = 0;
+		for(String strNum : strNums) {
+			sum += Integer.parseInt(strNum);
+		}
+		return sum;
+	}
 
-//		return 0;
+	// 문자열 값이 전부 숫자값인지 확인하기
+	public boolean isStrAllNum(String strVal) {
+		boolean allNumFlag = true;
+		for(int i=0; i<strVal.length(); i++) {
+			if( !(Character.isDigit(strVal.charAt(i))) ) allNumFlag = false;
+		}
+		return allNumFlag;
 	}
 
 }
+
+
+
+
+/*
+	// 커스텀구분자 기준으로 구분하여 숫자들 얻기
+	public String[] getNumsByCustomDivider(String param) {
+		int leftMarkIndex = param.lastIndexOf("//");
+		int rightMarkIndex = param.lastIndexOf("\n");
+		String customDivider = param.substring(leftMarkIndex+2, rightMarkIndex);
+		String cleanedParam = param.substring(rightMarkIndex+1);
+		return cleanedParam.split(customDivider);
+	}
+ */

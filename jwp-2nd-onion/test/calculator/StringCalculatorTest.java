@@ -6,10 +6,9 @@ import org.junit.jupiter.api.Test;
 
 class StringCalculatorTest {
 
-
 	@Test
-	void test(int testNum) {
-		assertEquals(0, add());
+	void test() {
+		fail("Not yet implemented");
 	}
 
 }
