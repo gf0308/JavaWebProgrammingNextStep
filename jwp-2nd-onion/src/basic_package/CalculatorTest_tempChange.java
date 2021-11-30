@@ -12,15 +12,15 @@ class CalculatorTest_tempChange {
 
 	private Calculator cal;
 
-	@BeforeEach		// junit5ºÎÅÏ @Before -> @BeforeEach ·Î ¹Ù²ñ
-	public void setUp() { // ÃÊ±âÈ­ ÀÛ¾÷
+	@BeforeEach		// junit5ë¶€í„´ @Before -> @BeforeEach ë¡œ ë°”ë€œ
+	public void setUp() { // ì´ˆê¸°í™” ìž‘ì—…
 		cal = new Calculator();
 		System.out.println("setUp!!");
 	}
 
 	@Test
 	public void add() {
-		assertEquals(3, cal.add(2, 1));		// assertEquals(¿¹»óÇÏ´Â°ª, ½ÇÁ¦°á°ú)
+		assertEquals(3, cal.add(2, 1));		// assertEquals(ì˜ˆìƒí•˜ëŠ”ê°’, ì‹¤ì œê²°ê³¼)
 		System.out.println("add!");
 	}
 
@@ -30,43 +30,43 @@ class CalculatorTest_tempChange {
 		System.out.println("divide!");
 	}
 
-	@AfterEach	// junit5ºÎÅÏ @After -> @AfterEach ·Î ¹Ù²ñ
-	public void teardown() { // ÈÄÃ³¸® ÀÛ¾÷
+	@AfterEach	// junit5ë¶€í„´ @After -> @AfterEach ë¡œ ë°”ë€œ
+	public void teardown() { // í›„ì²˜ë¦¬ ìž‘ì—…
 		System.out.println("teardown!!");
 	}
 
-	// JUnitÀº 'ÀüÃ³¸® ÀÛ¾÷/ÈÄÃ³¸® ÀÛ¾÷'À» º°µµ·Î µÎ°í ÀÌ¸¦ °¢ Å×½ºÆ® ¸¶´Ù ¸Å¹ø ¼öÇàµÇ¾îÁö°Ô ÇÔÀ¸·Î½á
-	// '°¢ Å×½ºÆ® °£ÀÇ µ¶¸³¼º'À» º¸ÀåÇÏµµ·Ï ÇÏ°í ÀÖ´Ù (@BeforeEach, @AfterEach µîÀ¸·Î)
+	// JUnitì€ 'ì „ì²˜ë¦¬ ìž‘ì—…/í›„ì²˜ë¦¬ ìž‘ì—…'ì„ ë³„ë„ë¡œ ë‘ê³  ì´ë¥¼ ê° í…ŒìŠ¤íŠ¸ ë§ˆë‹¤ ë§¤ë²ˆ ìˆ˜í–‰ë˜ì–´ì§€ê²Œ í•¨ìœ¼ë¡œì¨
+	// 'ê° í…ŒìŠ¤íŠ¸ ê°„ì˜ ë…ë¦½ì„±'ì„ ë³´ìž¥í•˜ë„ë¡ í•˜ê³  ìžˆë‹¤ (@BeforeEach, @AfterEach ë“±ìœ¼ë¡œ)
 
 }
 
-	// JUnitÀº 'Calculator cal = new Calculator();' ½ÄÀ¸·Î ¸â¹öÇÊµå¸¦ Á÷Á¢ »©³õ°í ¼±¾ðÇØ³õ´Â °ÍÀ» ±ÇÇÏÁö ¾Ê´Â´Ù, ÀÌ·± ¹æ½ÄÀº Å×½ºÆ®¿¡ ÀÖ¾î¼­ À§Çè¼ºÀÌ ÀÖ´Ù.
-	// ¿¹¸¦ µé¾î À§¿Í °°Àº ¹æ½ÄÀº CalculatorTestÀÇ ½ÇÇà ½Ã Calculator°´Ã¼ »ý¼ºÀÌ 1¹ø ÀÌ·ïÁö´Âµ¥, ÀÌ¸¦ ¿©·¯ Å×½ºÆ®¸Þ¼­µåµé(add,divide,,,)ÀÌ ÇÔ²² °øÀ¯ÇØ¼­ ¾²°Ô µÈ´Ù.
-	// -> Çåµ¥ ÀÌ·¯¸é ÇÑ ¸Þ¼­µå(ex: add)°¡ ÀÛ¾÷ Áß ÀÛ¾÷ °á°ú°¡ cal°´Ã¼ »óÅÂ¸¦ º¯°æ½ÃÅ³ ¼ö ÀÖ´Ù, ±×¸®°í ±×·¸°Ô µÇ¸é ´Ù¸¥ °´Ã¼°¡ cal°´Ã¼¸¦ ÀÌ¿ëÇÒ ¶§ test°á°ú°¡ Á¤»óÀûÀ¸·Î ¼öÇàµÇÁö ¾ÊÀ» °¡´É¼ºÀÌ ÀÖ´Ù.
+	// JUnitì€ 'Calculator cal = new Calculator();' ì‹ìœ¼ë¡œ ë©¤ë²„í•„ë“œë¥¼ ì§ì ‘ ë¹¼ë†“ê³  ì„ ì–¸í•´ë†“ëŠ” ê²ƒì„ ê¶Œí•˜ì§€ ì•ŠëŠ”ë‹¤, ì´ëŸ° ë°©ì‹ì€ í…ŒìŠ¤íŠ¸ì— ìžˆì–´ì„œ ìœ„í—˜ì„±ì´ ìžˆë‹¤.
+	// ì˜ˆë¥¼ ë“¤ì–´ ìœ„ì™€ ê°™ì€ ë°©ì‹ì€ CalculatorTestì˜ ì‹¤í–‰ ì‹œ Calculatorê°ì²´ ìƒì„±ì´ 1ë²ˆ ì´ë¤„ì§€ëŠ”ë°, ì´ë¥¼ ì—¬ëŸ¬ í…ŒìŠ¤íŠ¸ë©”ì„œë“œë“¤(add,divide,,,)ì´ í•¨ê»˜ ê³µìœ í•´ì„œ ì“°ê²Œ ëœë‹¤.
+	// -> í—Œë° ì´ëŸ¬ë©´ í•œ ë©”ì„œë“œ(ex: add)ê°€ ìž‘ì—… ì¤‘ ìž‘ì—… ê²°ê³¼ê°€ calê°ì²´ ìƒíƒœë¥¼ ë³€ê²½ì‹œí‚¬ ìˆ˜ ìžˆë‹¤, ê·¸ë¦¬ê³  ê·¸ë ‡ê²Œ ë˜ë©´ ë‹¤ë¥¸ ê°ì²´ê°€ calê°ì²´ë¥¼ ì´ìš©í•  ë•Œ testê²°ê³¼ê°€ ì •ìƒì ìœ¼ë¡œ ìˆ˜í–‰ë˜ì§€ ì•Šì„ ê°€ëŠ¥ì„±ì´ ìžˆë‹¤.
 
-	// ÀÌ·¯ÇÑ ¹®Á¦¸¦ ¹æÁöÇÏ°í ¾ÈÀüÇÑ ÃÊ±âÈ­¸¦ À§ÇÏ¿©, ´ë½Å @Before¶ó´Â ¾Ö³ÊÅ×ÀÌ¼ÇÀ» Áö¿øÇÏ°í ÀÖ´Ù
-	// @Before ¸¦ ´Ü ¸Þ¼­µå Á¦ÀÛÇØ »ç¿ë => '¸â¹öÇÊµåÀÇ ÃÊ±âÈ­' ¸¦ ¼öÇàÇÏ´Â Å×½ºÆ®¸Þ¼­µå¸¦ ¸¸µé¾î ¾²µµ·Ï ±ÇÇÑ´Ù
-	// -> ¸Å Å×½ºÆ® ½ÇÇà ½Ã ¸¶´Ù ±×¶§ ±×¶§ ¸â¹öÇÊµå ÃÊ±âÈ­¸¦ ¸Å¹ø ¼öÇàÇÔ
+	// ì´ëŸ¬í•œ ë¬¸ì œë¥¼ ë°©ì§€í•˜ê³  ì•ˆì „í•œ ì´ˆê¸°í™”ë¥¼ ìœ„í•˜ì—¬, ëŒ€ì‹  @Beforeë¼ëŠ” ì• ë„ˆí…Œì´ì…˜ì„ ì§€ì›í•˜ê³  ìžˆë‹¤
+	// @Before ë¥¼ ë‹¨ ë©”ì„œë“œ ì œìž‘í•´ ì‚¬ìš© => 'ë©¤ë²„í•„ë“œì˜ ì´ˆê¸°í™”' ë¥¼ ìˆ˜í–‰í•˜ëŠ” í…ŒìŠ¤íŠ¸ë©”ì„œë“œë¥¼ ë§Œë“¤ì–´ ì“°ë„ë¡ ê¶Œí•œë‹¤
+	// -> ë§¤ í…ŒìŠ¤íŠ¸ ì‹¤í–‰ ì‹œ ë§ˆë‹¤ ê·¸ë•Œ ê·¸ë•Œ ë©¤ë²„í•„ë“œ ì´ˆê¸°í™”ë¥¼ ë§¤ë²ˆ ìˆ˜í–‰í•¨
 
-	// @Before ¸Þ¼­µå¸¦ ÅëÇÏ¿© , °¢ Å×½ºÆ®µéÀÌ ½ÇÇàµÇ±â Àü(before) ¸¶´Ù »õ·ÎÀÌ ÇÊ¿äÇÑ ÀüÃ³¸®(ex: Calculator ÀÎ½ºÅÏ½º »ý¼º)¸¦ ¸Å¹ø ÇØÁÖ°Ô µÈ´Ù.
-	// -> ÀÌ·Î ÀÎÇØ °¢ Å×½ºÆ®´Â Å×½ºÆ® ½Ã »ç¿ëÇÏ´Â ÁØºñ¹°(ex: cal °´Ã¼ µî)À» 'µ¶¸³ÀûÀ¸·Î, ÀÚ±â Àü¿ëÀ¸·Î' ¾ò¾î¼­ »ç¿ëÇÒ ¼ö ÀÖ´Ù (°¢ Å×½ºÆ® ¸¶´Ù ÀÚ±â°¡ »ç¿ëÇÏ´Â °´Ã¼ÀÇ µ¶¸³¼ºÀ» º¸ÀåÇÏ´Â °Í)
-	// -> ±×·³À¸·Î½á °¢ÀÚÀÇ Å×½ºÆ®¿¡ ÁöÀåÀÌ³ª ¿µÇâÀÌ °¡Áö ¾Êµµ·Ï ÇÏ°í Á¤»óÀûÀÎ Å×½ºÆ® ¼öÇàÀ» ´Þ¼ºÇÑ´Ù.
+	// @Before ë©”ì„œë“œë¥¼ í†µí•˜ì—¬ , ê° í…ŒìŠ¤íŠ¸ë“¤ì´ ì‹¤í–‰ë˜ê¸° ì „(before) ë§ˆë‹¤ ìƒˆë¡œì´ í•„ìš”í•œ ì „ì²˜ë¦¬(ex: Calculator ì¸ìŠ¤í„´ìŠ¤ ìƒì„±)ë¥¼ ë§¤ë²ˆ í•´ì£¼ê²Œ ëœë‹¤.
+	// -> ì´ë¡œ ì¸í•´ ê° í…ŒìŠ¤íŠ¸ëŠ” í…ŒìŠ¤íŠ¸ ì‹œ ì‚¬ìš©í•˜ëŠ” ì¤€ë¹„ë¬¼(ex: cal ê°ì²´ ë“±)ì„ 'ë…ë¦½ì ìœ¼ë¡œ, ìžê¸° ì „ìš©ìœ¼ë¡œ' ì–»ì–´ì„œ ì‚¬ìš©í•  ìˆ˜ ìžˆë‹¤ (ê° í…ŒìŠ¤íŠ¸ ë§ˆë‹¤ ìžê¸°ê°€ ì‚¬ìš©í•˜ëŠ” ê°ì²´ì˜ ë…ë¦½ì„±ì„ ë³´ìž¥í•˜ëŠ” ê²ƒ)
+	// -> ê·¸ëŸ¼ìœ¼ë¡œì¨ ê°ìžì˜ í…ŒìŠ¤íŠ¸ì— ì§€ìž¥ì´ë‚˜ ì˜í–¥ì´ ê°€ì§€ ì•Šë„ë¡ í•˜ê³  ì •ìƒì ì¸ í…ŒìŠ¤íŠ¸ ìˆ˜í–‰ì„ ë‹¬ì„±í•œë‹¤.
 
 /*
  *
- * Junit¿¡¼­ @Before³ª setUp() À¸·Î °´Ã¼ »ý¼º ÃÊ±âÈ­¸¦ ÇØÁÖ´Â ÀÌÀ¯
+ * Junitì—ì„œ @Beforeë‚˜ setUp() ìœ¼ë¡œ ê°ì²´ ìƒì„± ì´ˆê¸°í™”ë¥¼ í•´ì£¼ëŠ” ì´ìœ 
  *
- * 1. Exception ¹ß»ý ½Ã À¯¿ëÇÑ Á¤º¸ ½ÀµæÀ» À§ÇÏ¿©
- *   : setUp()¿¡¼­ ¿¹¿Ü°¡ ¹ß»ýÇÏ¸é JUnitÀÌ À¯¿ëÇÑ ½ºÅÃÆ®·¹ÀÌ½º Á¤º¸¸¦ µ¹·ÁÁÖÁö¸¸,
- *     »ý¼ºÀÚ¿¡¼­ ¿¹¿Ü°¡ ¹ß»ýÇÏ¸é ±×³É Å×½ºÆ® °´Ã¼¸¦ ¸ø ¸¸µå´Â °ÍÀÌ±â ¶§¹®¿¡ À¯¿ëÇÑ Á¤º¸¸¦ ¾òÀ» ¼ö ¾øÀ½.
+ * 1. Exception ë°œìƒ ì‹œ ìœ ìš©í•œ ì •ë³´ ìŠµë“ì„ ìœ„í•˜ì—¬
+ *   : setUp()ì—ì„œ ì˜ˆì™¸ê°€ ë°œìƒí•˜ë©´ JUnitì´ ìœ ìš©í•œ ìŠ¤íƒíŠ¸ë ˆì´ìŠ¤ ì •ë³´ë¥¼ ëŒë ¤ì£¼ì§€ë§Œ,
+ *     ìƒì„±ìžì—ì„œ ì˜ˆì™¸ê°€ ë°œìƒí•˜ë©´ ê·¸ëƒ¥ í…ŒìŠ¤íŠ¸ ê°ì²´ë¥¼ ëª» ë§Œë“œëŠ” ê²ƒì´ê¸° ë•Œë¬¸ì— ìœ ìš©í•œ ì •ë³´ë¥¼ ì–»ì„ ìˆ˜ ì—†ìŒ.
  *
- * 2. Best PracticeÀÌ±â ¶§¹®
- *   : Å×½ºÆ®ÇÏ·Á´Â Å¬·¡½ºÀÇ ÀÎ½ºÅÏ½º´Â Å×½ºÆ® ¶Ç´Â setUp()¿¡¼­ »ý¼ºÇÏ°í, Å×½ºÆ® ´ë»óÀÌ ¾Æ´Ñ ¼Ó¼ºµéÀº
- *     ÇÊµå¿¡¼­ Á÷Á¢ new·Î »ý¼ºÇØµµ »ó°ü¾øÀ½
+ * 2. Best Practiceì´ê¸° ë•Œë¬¸
+ *   : í…ŒìŠ¤íŠ¸í•˜ë ¤ëŠ” í´ëž˜ìŠ¤ì˜ ì¸ìŠ¤í„´ìŠ¤ëŠ” í…ŒìŠ¤íŠ¸ ë˜ëŠ” setUp()ì—ì„œ ìƒì„±í•˜ê³ , í…ŒìŠ¤íŠ¸ ëŒ€ìƒì´ ì•„ë‹Œ ì†ì„±ë“¤ì€
+ *     í•„ë“œì—ì„œ ì§ì ‘ newë¡œ ìƒì„±í•´ë„ ìƒê´€ì—†ìŒ
  *
- * 3. @RunWith, @Rule °°Àº ¾Ö³ÊÅ×ÀÌ¼ÇÀ» »ç¿ëÇÏ¿© È®ÀåÇÏ´Â ±â´ÉÀ» ÀÌ¿ëÇÏ±â À§ÇØ
- *   : "@Before Å×½ºÆ® ¸Þ¼­µå ¾È¿¡¼­¸¸ @RunWith, @Rule¿¡¼­ ÃÊ±âÈ­ µÈ °´Ã¼¿¡ Á¢±ÙÇÒ ¼ö ÀÖ´Ù"´Â Á¦¾à»çÇ×ÀÌ ÀÖÀ½.
- *    -> µû¶ó¼­ °¡´ÉÇÑ @Before Å×½ºÆ® ¸Þ¼­µå¿¡¼­ ÃÊ±âÈ­ ÀÛ¾÷À» ÇÏ´Â °ÍÀÌ ÃßÈÄ ¹®Á¦°¡ ¹ß»ýÇÒ °¡´É¼ºÀ» ¾ø¾Ù ¼ö ÀÖÀ½.
+ * 3. @RunWith, @Rule ê°™ì€ ì• ë„ˆí…Œì´ì…˜ì„ ì‚¬ìš©í•˜ì—¬ í™•ìž¥í•˜ëŠ” ê¸°ëŠ¥ì„ ì´ìš©í•˜ê¸° ìœ„í•´
+ *   : "@Before í…ŒìŠ¤íŠ¸ ë©”ì„œë“œ ì•ˆì—ì„œë§Œ @RunWith, @Ruleì—ì„œ ì´ˆê¸°í™” ëœ ê°ì²´ì— ì ‘ê·¼í•  ìˆ˜ ìžˆë‹¤"ëŠ” ì œì•½ì‚¬í•­ì´ ìžˆìŒ.
+ *    -> ë”°ë¼ì„œ ê°€ëŠ¥í•œ @Before í…ŒìŠ¤íŠ¸ ë©”ì„œë“œì—ì„œ ì´ˆê¸°í™” ìž‘ì—…ì„ í•˜ëŠ” ê²ƒì´ ì¶”í›„ ë¬¸ì œê°€ ë°œìƒí•  ê°€ëŠ¥ì„±ì„ ì—†ì•¨ ìˆ˜ ìžˆìŒ.
  *
  * */
 

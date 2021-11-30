@@ -10,16 +10,16 @@ import org.junit.jupiter.api.TestInstance.Lifecycle;
 
 /* @TestInstance
  *
- * JUnit¿¡¼­ @TestInstance Àº 'Å×½ºÆ® ÀÎ½ºÅÏ½ºÀÇ ¶óÀÌÇÁ»çÀÌÅ¬'À» ¼³Á¤ÇÒ ¶§ »ç¿ëÇÑ´Ù.
-	 - PER_METHOD : Test ¸Ş¼­µå ´ç ÀÎ½ºÅÏ½º¸¦ »ı¼º
-	 - PER_CLASS : TestÅ¬·¡½º ´ç ÀÎ½ºÅÏ½º¸¦ »ı¼º
+ * JUnitì—ì„œ @TestInstance ì€ 'í…ŒìŠ¤íŠ¸ ì¸ìŠ¤í„´ìŠ¤ì˜ ë¼ì´í”„ì‚¬ì´í´'ì„ ì„¤ì •í•  ë•Œ ì‚¬ìš©í•œë‹¤.
+	 - PER_METHOD : Test ë©”ì„œë“œ ë‹¹ ì¸ìŠ¤í„´ìŠ¤ë¥¼ ìƒì„±
+	 - PER_CLASS : Testí´ë˜ìŠ¤ ë‹¹ ì¸ìŠ¤í„´ìŠ¤ë¥¼ ìƒì„±
  *
- * ¶óÀÌÇÁ»çÀÌÅ¬À» Å¬·¡½º´ÜÀ§·Î ÁöÁ¤ÇØ³õÀ¸¸é @BeforeAll/@AfterAll µîÀ» staticÀÌ ¾Æ´Ñ ¸Ş¼­µå¿¡¼­µµ »ç¿ëÇÒ ¼ö ÀÖ´Ù
- * (ÂüÁ¶: https://awayday.github.io/2017-11-12/junit5-05/)
+ * ë¼ì´í”„ì‚¬ì´í´ì„ í´ë˜ìŠ¤ë‹¨ìœ„ë¡œ ì§€ì •í•´ë†“ìœ¼ë©´ @BeforeAll/@AfterAll ë“±ì„ staticì´ ì•„ë‹Œ ë©”ì„œë“œì—ì„œë„ ì‚¬ìš©í•  ìˆ˜ ìˆë‹¤
+ * (ì°¸ì¡°: https://awayday.github.io/2017-11-12/junit5-05/)
  * */
 
-//@TestInstance(Lifecycle.PER_METHOD) -- ¿ä Ç¥±âÀÇ È¿´ÉÀº ¹¹Áö?
-//@TestInstance(Lifecycle.PER_CLASS) // Å¬·¡½º ´ÜÀ§ÀÇ ÀÎ½ºÅÏ½º »ı¸íÁÖ±â¸¦ ¼³Á¤ÇÏ¸é non static ¸Ş¼­µå¿¡¼­µµ @BeforeAll/@AfterAll À» ¹Ù·Î ¾µ¼öÀÖ´Ù.
+//@TestInstance(Lifecycle.PER_METHOD) -- ìš” í‘œê¸°ì˜ íš¨ëŠ¥ì€ ë­ì§€?
+//@TestInstance(Lifecycle.PER_CLASS) // í´ë˜ìŠ¤ ë‹¨ìœ„ì˜ ì¸ìŠ¤í„´ìŠ¤ ìƒëª…ì£¼ê¸°ë¥¼ ì„¤ì •í•˜ë©´ non static ë©”ì„œë“œì—ì„œë„ @BeforeAll/@AfterAll ì„ ë°”ë¡œ ì“¸ìˆ˜ìˆë‹¤.
 class CalculatorTest {
 
 	private Calculator cal;
@@ -36,8 +36,8 @@ class CalculatorTest {
 		System.out.println("finish cal!");
 	}
 
-	// @BeforeAll/@AfterAll Àº ±âº»ÀûÀ¸·Î static ¸Ş¼­µå¿¡ ºÙÀÏ ¼ö ÀÖ´Ù.
-	// staticÀÌ ¾Æ´Ñ °÷¿¡µµ ºÙÀÌ°í ½Í´Ù¸é ÇØ´ç Å×½ºÆ®Å¬·¡½º¿¡ @TestInstance(Lifecycle.PER_CLASS) Ã³¸®°¡ ÀÌ·ïÁ®¾ß ÇÑ´Ù.
+	// @BeforeAll/@AfterAll ì€ ê¸°ë³¸ì ìœ¼ë¡œ static ë©”ì„œë“œì— ë¶™ì¼ ìˆ˜ ìˆë‹¤.
+	// staticì´ ì•„ë‹Œ ê³³ì—ë„ ë¶™ì´ê³  ì‹¶ë‹¤ë©´ í•´ë‹¹ í…ŒìŠ¤íŠ¸í´ë˜ìŠ¤ì— @TestInstance(Lifecycle.PER_CLASS) ì²˜ë¦¬ê°€ ì´ë¤„ì ¸ì•¼ í•œë‹¤.
 	@BeforeAll
 	public static void all_before() {
 		System.out.println("========= The Start =========");

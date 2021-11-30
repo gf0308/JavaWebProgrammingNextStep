@@ -1,45 +1,45 @@
 package test_211129;
 
 /*
- * - Ä¿½ºÅÒ±¸ºÐÀÚ´Â ÅõÀÔ¹®ÀÚ¿­ÀÇ ¾Õ¿¡ ¿Â´Ù
- * - ÀÏ¹Ý±¸ºÐÀÚ, Ä¿½ºÅÒ±¸ºÐÀÚ·Î ±¸ºÐµÇ¾î Ç¥ÇöµÈ ¼ýÀÚ¹®ÀÚ¿­Àº ¹Ýµå½Ã ¼ýÀÚ°ª°ú ±¸ºÐÀÚ·Î¸¸ ÀÌ·ç¾îÁø Ã¤ÀÇ ÅõÀÔ°ªÀ¸·Î ³¯¶ó¿Â´Ù, ¾µµ¥¾ø´Â ÀâÄÚµå´Â ¼¯¿©¿ÀÁö ¾Ê´Â´Ù
+ * - Ä¿ï¿½ï¿½ï¿½Ò±ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ ï¿½ï¿½ï¿½Ô¹ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½Õ¿ï¿½ ï¿½Â´ï¿½
+ * - ï¿½Ï¹Ý±ï¿½ï¿½ï¿½ï¿½ï¿½, Ä¿ï¿½ï¿½ï¿½Ò±ï¿½ï¿½ï¿½ï¿½Ú·ï¿½ ï¿½ï¿½ï¿½ÐµÇ¾ï¿½ Ç¥ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¹ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½Ýµï¿½ï¿½ ï¿½ï¿½ï¿½Ú°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ú·Î¸ï¿½ ï¿½Ì·ï¿½ï¿½ï¿½ï¿½ Ã¤ï¿½ï¿½ ï¿½ï¿½ï¿½Ô°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Â´ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Úµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´Â´ï¿½
  * */
 
 public class Calculator01Exam01 {
 
-	// ¸ÞÀÎ ¼öÇà ¸Þ¼­µå
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½
 	public int calculateStrNumSum(String param) {
 		String[] arrs = null;
 
-		if(param.contains("//") && param.contains("\n")) { // Ä¿½ºÅÒ ±¸ºÐÀÚ·Î ±¸ºÐµÈ °æ¿ì
+		if(param.contains("//") && param.contains("\n")) { // Ä¿ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½ ï¿½ï¿½ï¿½Ðµï¿½ ï¿½ï¿½ï¿½
 			arrs = getNumsByCustomDivider(param);
 		}
 
-		if(param.contains(",") || param.contains(":")) { // ±âº» ±¸ºÐÀÚ·Î ±¸ºÐµÈ °æ¿ì
+		if(param.contains(",") || param.contains(":")) { // ï¿½âº» ï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½ ï¿½ï¿½ï¿½Ðµï¿½ ï¿½ï¿½ï¿½
 			arrs = getNumsByBasicDivider(param);
 		}
 
-		isThereNegativeNumber(arrs); // ¿ä¼Ò Áß À½¼öÀÎ °ªÀÌ ÀÖ´ÂÁö È®ÀÎ : true¶ó¸é RuntimeException ¹ÝÈ¯
+		isThereNegativeNumber(arrs); // ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ È®ï¿½ï¿½ : trueï¿½ï¿½ï¿½ RuntimeException ï¿½ï¿½È¯
 
-		return sumNumbers(arrs); // ¿ä¼ÒµéÀ» ´Ù ´õÇÑ´Ù
+		return sumNumbers(arrs); // ï¿½ï¿½Òµï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ñ´ï¿½
 	}
 
 
-	// Ä¿½ºÅÒ±¸ºÐÀÚ·Î ¼ýÀÚ°ª ¹è¿­ ¾ò±â
+	// Ä¿ï¿½ï¿½ï¿½Ò±ï¿½ï¿½ï¿½ï¿½Ú·ï¿½ ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½è¿­ ï¿½ï¿½ï¿½
 	public String[] getNumsByCustomDivider(String param) {
 		int leftMarkIndex = param.lastIndexOf("//");
 		int rightMarkIndex = param.lastIndexOf("\n");
 		String customDivider = param.substring(leftMarkIndex+2, rightMarkIndex);
-		String cleanedParam = param.substring(rightMarkIndex+1); // Ä¿½ºÅÒ±¸ºÐÀÚ¸¦ ±âÁØÀ¸·Î ½ºÇÃ¸´ÇÏ±â Àü, ÅõÀÔ¹®ÀÚ¿­°ª¿¡¼­ ±¸ºÐÀÚºÎºÐÀº ¹èÁ¦ÇØÁÖ±â
+		String cleanedParam = param.substring(rightMarkIndex+1); // Ä¿ï¿½ï¿½ï¿½Ò±ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã¸ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½, ï¿½ï¿½ï¿½Ô¹ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ÚºÎºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½
 		return cleanedParam.split(customDivider);
 	}
 
-	// ±âºÐ±¸ºÐÀÚ·Î ¼ýÀÚ°ª ¹è¿­ ¾ò±â
+	// ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½Ú·ï¿½ ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½è¿­ ï¿½ï¿½ï¿½
 	public String[] getNumsByBasicDivider(String param) {
 		return param.split(",|:");
 	}
 
-	// À½¼ö¿©ºÎ Ã¼Å©ÇÏ±â
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¼Å©ï¿½Ï±ï¿½
 	public void isThereNegativeNumber(String[] strNums) {
 		for(String strNum : strNums) {
 			if(Integer.parseInt(strNum) < 0) {
@@ -48,7 +48,7 @@ public class Calculator01Exam01 {
 		}
 	}
 
-	// ¼ýÀÚ°ª ÃÑÇÕ ¾ò±â
+	// ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	public int sumNumbers(String[] strNums) {
 		int sum = 0;
 		for(String strNum : strNums) {

@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 class Calculator01Test {
 
-//	private Calculator01 cal = new Calculator01(); // ¿©·¯ Å×½ºÆ®¸Þ¼­µå¿¡¼­ °¡Á®´Ù »ç¿ëÇÏ´Ùº¸¸é cal °´Ã¼°ª¿¡ ¿µÇâÀÌ °¡´Â °æ¿ìµµ ¹ß»ý°¡´É -> ÀÌ·¯¸é ±× ÈÄ ´Ù¸¥ Å×½ºÆÃ¸Þ¼­µå´Â ÀÌ¸¦ »ç¿ë½Ã Å×½ºÆ®°á°ú°¡ ¹Ù²ð¼öÀÖ´Â ¹®Á¦ ¹ß»ý °¡´É
+//	private Calculator01 cal = new Calculator01(); // ì—¬ëŸ¬ í…ŒìŠ¤íŠ¸ë©”ì„œë“œì—ì„œ ê°€ì ¸ë‹¤ ì‚¬ìš©í•˜ë‹¤ë³´ë©´ cal ê°ì²´ê°’ì— ì˜í–¥ì´ ê°€ëŠ” ê²½ìš°ë„ ë°œìƒê°€ëŠ¥ -> ì´ëŸ¬ë©´ ê·¸ í›„ ë‹¤ë¥¸ í…ŒìŠ¤íŒ…ë©”ì„œë“œëŠ” ì´ë¥¼ ì‚¬ìš©ì‹œ í…ŒìŠ¤íŠ¸ê²°ê³¼ê°€ ë°”ë€”ìˆ˜ìžˆëŠ” ë¬¸ì œ ë°œìƒ ê°€ëŠ¥
 	private Calculator01 cal;
 
 	@BeforeEach
