@@ -18,4 +18,6 @@ public class Calculator01 {
 		return i / j;
 	}
 
+
+
 }
