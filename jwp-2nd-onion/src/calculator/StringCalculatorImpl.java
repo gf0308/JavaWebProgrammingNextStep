@@ -3,7 +3,7 @@ package calculator;
 public class StringCalculatorImpl {
 	public static void main(String args[]) {
 
-		StringCalculator sc = new StringCalculator();
+		StringCalculatorKjb sc = new StringCalculatorKjb();
 
 //		String param = "12,23:34";
 		String param = "//;\n1;2;3";

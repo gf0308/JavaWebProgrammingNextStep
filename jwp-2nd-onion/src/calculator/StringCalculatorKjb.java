@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
  *
  * */
 
-public class StringCalculator {
+public class StringCalculatorKjb {
 
 	// 문자열숫자 총합 계산 수행 메서드
 	public int calculateStrNumSum(String param) {
